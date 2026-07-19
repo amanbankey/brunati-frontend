@@ -1,0 +1,224 @@
+.olfactory-trends-section {
+    padding: 60px 0;
+    background-color: var(--apple-bg);
+    overflow: hidden;
+}
+
+.olfactory-trends-section .section-title {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: clamp(2rem, 4vw, 2.5rem);
+    font-weight: 700;
+    padding: 0 24px;
+}
+
+.trends-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding-left: 0;
+}
+
+.olfactory-trends-wrapper {
+    position: relative;
+}
+
+.trends-arrow-container {
+    display: flex;
+    justify-content: right;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.trends-slider-arrow {
+    background-color: transparent;
+    border: 1px solid black;
+    color: black;
+    padding: 5px;
+    cursor: pointer;
+    z-index: 10;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+}
+
+.trends-slider-arrow.left-arrow {
+    left: 5px;
+}
+
+.trends-slider-arrow.right-arrow {
+    right: 5px;
+}
+
+.trends-scroll-container {
+    display: flex;
+    overflow-x: auto;
+    gap: 15px;
+    padding: 0 24px 20px;
+    padding-bottom: 20px;
+    scrollbar-width: none; /* Firefox */
+    -webkit-overflow-scrolling: touch;
+    flex: 1;
+    justify-content: flex-start;
+}
+
+.trends-scroll-container::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
+}
+
+/* Mobile and iPad - Remove center alignment and show all cards */
+@media (max-width: 1024px) {
+    .trends-scroll-container {
+        justify-content: flex-start;
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+}
+
+.trend-card {
+    min-width: 250px;
+    width: 250px;
+    border: 1px solid #e5e5e5;
+    border-radius: 12px;
+    padding-bottom: 15px;
+    background: #fff;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    scroll-snap-align: start;
+}
+
+.trend-video-wrapper {
+    width: 100%;
+    height: 350px;
+    background-color: #000;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    margin-bottom: 15px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+}
+
+.trend-main-video.placeholder-dark {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    background-color: #000;
+    display: block;
+}
+
+.trend-bottom-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    padding: 0 15px;
+}
+
+.trend-small-image.placeholder-light {
+    width: 40px;
+    height: 40px;
+    background-color: #e6e6e6;
+    border-radius: 4px; /* Slight rounding for bottle image */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.trend-small-image.placeholder-light:hover {
+    transform: scale(1.1);
+}
+
+.trend-buy-btn {
+    width: 100%;
+    background-color: #000;
+    color: #fff;
+    padding: 10px 0;
+    border: none;
+    border-radius: 8px; /* Slightly rounded button */
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.trend-buy-btn:hover {
+    background-color: #333;
+}
+
+.video-play-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(4px);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none; /* Let clicks pass through to wrapper */
+    transition: opacity 0.3s ease;
+}
+
+.play-icon {
+    font-size: 24px;
+    color: #000;
+    margin-left: 4px; /* visually center play triangle */
+}
+
+/* Arrow buttons styling */
+.trend-arrow {
+    display: none;
+    position: absolute;
+    bottom: 20px;
+    width: 48.4px;
+    height: 48.4px;
+    background-color: #fff;
+    color: #000;
+    border: none;
+    border-radius: 50%;
+    font-size: 29.04px;
+    cursor: pointer;
+    z-index: 10;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+.trend-arrow:hover {
+    background-color: #ddd;
+    transform: scale(1.05);
+}
+
+.trend-arrow-left {
+    left: auto;
+    right: 50px;
+}
+
+.trend-arrow-right {
+    right: 0;
+}
+
+/* Desktop view only */
+@media (min-width: 1024px) {
+    .trend-arrow {
+        display: flex;
+    }
+    
+    .trends-container {
+        padding-bottom: 60px;
+    }
+}
