@@ -1,7 +1,12 @@
 import { useState } from "react";
 import { CheckCircle2 } from "lucide-react";
-import toast from "react-hot-toast"
-const SendOtp = ({ setOpenVerify, setOpenSend, setMobile: setMobileForParent }) => {
+import toast from "react-hot-toast";
+
+const SendOtp = ({
+  setOpenVerify,
+  setOpenSend,
+  setMobile: setMobileForParent,
+}) => {
   const [mobile, setMobile] = useState("");
   const [error, setError] = useState("");
   const [notify, setNotify] = useState(true);
@@ -24,13 +29,13 @@ const SendOtp = ({ setOpenVerify, setOpenSend, setMobile: setMobileForParent }) 
 
   const handleSubmit = async () => {
     if (!mobile) {
-      toast.error("Mobile number is required")
+      toast.error("Mobile number is required");
       setError("Mobile number is required.");
       return;
     }
 
     if (!/^[6-9]\d{9}$/.test(mobile)) {
-      toast.error("Enter a valid 10-digit mobile number.")
+      toast.error("Enter a valid 10-digit mobile number.");
       setError("Enter a valid 10-digit mobile number.");
       return;
     }
@@ -46,8 +51,8 @@ const SendOtp = ({ setOpenVerify, setOpenSend, setMobile: setMobileForParent }) 
       const data = await res.json();
 
       if (data.success) {
-        toast.success("OTP sent successfully")
-        console.log("OTP sent successfully");
+        toast.success("OTP sent successfully");
+        // console.log("OTP sent successfully");
         if (setMobileForParent) setMobileForParent(mobile);
         setOpenSend(false);
         setOpenVerify(true);
@@ -61,41 +66,36 @@ const SendOtp = ({ setOpenVerify, setOpenSend, setMobile: setMobileForParent }) 
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4">
-      <div className="w-full max-w-sm bg-white rounded-lg border shadow-sm p-4">
-
+    <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4 font-sans">
+      <div className="w-full max-w-sm bg-white rounded-2xl border border-gray-200 shadow-sm p-4">
         <h2 className="text-sm font-medium text-gray-700 mb-4">
           Enter your mobile number to continue.
         </h2>
 
-        <div className="flex border rounded-md overflow-hidden">
+        <div className="flex border border-gray-300 rounded-full overflow-hidden">
           <input
             type="text"
             inputMode="numeric"
             placeholder="Mobile Number"
             value={mobile}
             onChange={handleChange}
-            className="w-full px-4 py-3 outline-none text-lg"
+            className="w-full px-4 py-3 outline-none text-lg bg-transparent"
           />
 
           <button
             onClick={handleSubmit}
             disabled={!/^[6-9]\d{9}$/.test(mobile)}
-            className={`w-32 font-medium transition ${
+            className={`w-32 font-medium transition rounded-full ${
               /^[6-9]\d{9}$/.test(mobile)
-                ? "bg-blue-600 text-white hover:bg-blue-700"
-                : "bg-gray-300 text-gray-500 cursor-not-allowed"
+                ? "bg-black text-white hover:bg-gray-800"
+                : "bg-gray-200 text-gray-400 cursor-not-allowed"
             }`}
           >
             Next
           </button>
         </div>
 
-        {error && (
-          <p className="text-red-500 text-xs mt-2">
-            {error}
-          </p>
-        )}
+        {error && <p className="text-red-500 text-xs mt-2">{error}</p>}
 
         <label className="flex items-center gap-2 mt-4 cursor-pointer">
           <input
@@ -107,7 +107,7 @@ const SendOtp = ({ setOpenVerify, setOpenSend, setMobile: setMobileForParent }) 
 
           <CheckCircle2
             size={18}
-            className={notify ? "text-gray-500 fill-gray-500" : "text-gray-300"}
+            className={notify ? "text-teal-600 fill-teal-600" : "text-gray-300"}
           />
 
           <span className="text-sm text-gray-700">

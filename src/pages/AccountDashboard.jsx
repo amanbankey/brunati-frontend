@@ -420,7 +420,8 @@ const OrdersView = ({ orders = [], onCancelOrder }) => {
                                         {order.id}
                                     </p>
                                     <p style={{ fontFamily: FONT, fontSize: '0.72rem', color: '#6e6e73' }}>
-                                        {order.date} · {order.items.length} item{order.items.length > 1 ? 's' : ''} · ₹ {order.total.toLocaleString('en-IN')}.00
+                                        {order.date} · {order.items.length} item{order.items.length > 1 ? 's' : ''} ·
+                                         ₹ {order.total.toLocaleString('en-IN')}.00
                                     </p>
                                 </div>
                             </div>

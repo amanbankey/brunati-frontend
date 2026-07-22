@@ -10,10 +10,6 @@ import VerifyOtp from '../landing/VerifyOtp';
 
 const CheckoutFlow = ({ isOpen, onClose, isDirectBuy = false, directBuyProduct = null }) => {
 
-    // useEffect(() => {
-    //     console.log('CheckoutFlow mounted', { isOpen });
-    // }, []);
-
     const navigate = useNavigate();
     const { cartItems, getSubtotal, clearCart } = useCart();
     

@@ -156,7 +156,7 @@ const Collections = () => {
 
     const activeCatName = categories?.find(c => (typeof c === 'string' ? c : c._id) === activeTab) || {};
     const displayActiveName = typeof activeCatName === 'string' ? activeCatName : activeCatName?.name;
-    console.log("dddd", currentProduct)
+    // console.log("dddd", currentProduct)
 
     if (!currentTabProducts || currentTabProducts.length === 0) {
         return (

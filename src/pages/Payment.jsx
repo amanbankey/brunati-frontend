@@ -16,7 +16,7 @@ const PaymentGateway = () => {
   const navigate = useNavigate();
   const location = useLocation();
   let { items, subtotal, total, orderData } = location.state || {};
-
+  
   const loadRazorpay = () => {
     const script = document.createElement("script");
     script.src = "https://checkout.razorpay.com/v1/checkout.js";
@@ -113,21 +113,23 @@ const PaymentGateway = () => {
   if (!items) return <h2 className="text-center mt-10">No items found</h2>;
 
   return (
-    <div className="min-h-screen bg-gray-50 px-4 py-10 flex justify-center">
-      <div className="max-w-4xl w-full bg-white p-6 rounded-xl shadow-md">
-        <h1 className="text-2xl font-semibold text-gray-800 mb-6">
+  
+
+     <div className="min-h-screen bg-gray-50 px-4 py-10 flex justify-center font-sans pt-24">
+      <div className="max-w-4xl w-full bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+        <h1 className="text-2xl font-semibold text-gray-900 mb-6">
           Payment Checkout
         </h1>
-
+ 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div>
-            <h2 className="text-lg font-medium text-gray-700 mb-3">
+            <h2 className="text-lg font-medium text-gray-900 mb-3">
               Your Items
             </h2>
-
+ 
             <div className="space-y-4">
               {items.map((item, id) => (
-                <div key={id} className="flex gap-4 border p-3 rounded-lg">
+                <div key={id} className="flex gap-4 border border-gray-200 p-3 rounded-xl">
                   <div className="w-full">
                     <div className="flex justify-between">
                       <p className="font-normal text-gray-900 text-sm">
@@ -137,7 +139,7 @@ const PaymentGateway = () => {
                         ₹{item.price * item.quantity}
                       </p>
                     </div>
-                    <p className="text-gray-600 text-sm mt-1">
+                    <p className="text-gray-500 text-sm mt-1">
                       Qty: {item.quantity}
                     </p>
                   </div>
@@ -145,38 +147,40 @@ const PaymentGateway = () => {
               ))}
             </div>
           </div>
-
-          <div className="border p-6 rounded-lg bg-gray-50">
-            <h2 className="text-lg font-medium text-gray-800 mb-4">
+ 
+          <div className="border border-gray-200 p-6 rounded-2xl bg-gray-50">
+            <h2 className="text-lg font-medium text-gray-900 mb-4">
               Order Summary
             </h2>
-
+ 
             <div className="flex justify-between text-gray-700 mb-2">
               <span>Subtotal</span>
               <span>₹{subTotal}</span>
             </div>
-
-            <div className="flex justify-between text-xs text-gray-700 mb-2">
+ 
+            <div className="flex justify-between text-xs text-gray-500 mb-2">
               <span>Delivery Charge</span>
               <span>{subTotal > 500 ? "Free Delivery" : `₹100`}</span>
             </div>
-
-            <div className="flex justify-between text-xs text-gray-700 mb-2">
+ 
+            <div className="flex justify-between text-xs text-gray-500 mb-2">
               <span>GST (18%)</span>
               <span>₹{gst.toFixed(2)}</span>
             </div>
-
-            <div className="flex justify-between text-gray-900 text-lg font-semibold border-t pt-3">
+ 
+            <div className="flex justify-between text-gray-900 text-lg font-semibold border-t border-gray-200 pt-3">
               <span>Total Payable</span>
-              <span className="text-teal-600">₹{totall}</span>
+              <span className="text-teal-600">₹{totall.toFixed(2)}</span>
             </div>
-
+ 
             <button
               onClick={makePayment}
               disabled={loading}
-              className={`w-full mt-6 text-white py-3 rounded-full transition ${loading ? 'bg-gray-400' : 'bg-teal-600 hover:bg-teal-700'}`}
+              className={`w-full mt-6 text-white py-3 rounded-full font-semibold transition ${
+                loading ? "bg-gray-400" : "bg-black hover:bg-gray-800"
+              }`}
             >
-              {loading ? 'Processing...' : 'Pay Now'}
+              {loading ? "Processing..." : "Pay Now"}
             </button>
           </div>
         </div>
